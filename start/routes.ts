@@ -23,6 +23,9 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.get('/', async () => {
   return { hello: 'world' }
 })
+Route.get('/mehedi',async()=>{
+  return 'mehedi rainboy from cumilla';
+})
 
 Route.group(() => {
 
@@ -34,6 +37,7 @@ Route.group(() => {
         Route.get("todos/:id", "TodosController.show");
         Route.put("todos/:id", "TodosController.update");
         Route.post("todos", "TodosController.store");
+        Route.delete("todos/:id", "TodosController.destroy");
         }).middleware("auth:api");
 
 }).prefix("api");
