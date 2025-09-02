@@ -20,25 +20,14 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 
+// Basic routes
 Route.get('/', async () => {
-  return { hello: 'world' }
-})
-Route.get('/mehedi',async()=>{
-  return 'mehedi rainboy from cumilla';
+  return 'this is home';
 })
 
-Route.group(() => {
+// Import User/Auth routes from UserRoutes.ts file
+import '../app/Controllers/Http/User/UserRoutes'
 
-    Route.post("register", "AuthController.register");
-    Route.post("login", "AuthController.login");
-
-        Route.group(() => {
-        Route.get("todos", "TodosController.index");
-        Route.get("todos/:id", "TodosController.show");
-        Route.put("todos/:id", "TodosController.update");
-        Route.post("todos", "TodosController.store");
-        Route.delete("todos/:id", "TodosController.destroy");
-        }).middleware("auth:api");
-
-}).prefix("api");
+// Import Todo routes from TodoRoutes.ts file
+import '../app/Controllers/Http/Todo/TodoRoutes'
 
